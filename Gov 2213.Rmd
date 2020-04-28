@@ -1,0 +1,36 @@
+---
+title: "Gov 2213"
+author: "Sophia Freuden"
+date: "4/28/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(lubridate)
+library(readxl)
+library(tidyverse)
+```
+
+```{r}
+google <- read_xlsx("sorosall.xlsx")
+```
+
+
+```{r}
+google %>% ggplot(aes(x = Month)) +
+  geom_line(aes(y = sorosWW, color = "'Soros' Worldwide")) +
+  geom_line(aes(y = sorosCyrWW, color = "Soros (Cyr.) Worldwide")) +
+  geom_line(aes(y = sorosHU, color = "'Soros' Hungary")) +
+  geom_line(aes(y = sorosUS, color = "'Soros' US")) +
+  labs(title = "Google Trends for 'Soros' Search Terms Over Time",
+       caption = "Scale of 1-100 on Y axis determined by Google; numbers relative to each other over time.",
+       y = "Relative Search Frequency",
+       x = "Time",
+       color = "Search Term")
+```
+
+```{r}
+
+```
+
