@@ -137,6 +137,12 @@ graph7 <- google2 %>% ggplot(aes(x = Month)) +
 ```
 
 ```{r}
+pdf("graph7.pdf", width = 10, height = 4)
+graph7
+dev.off()
+```
+
+```{r}
 graph8 <- google2 %>% ggplot(aes(x = Month)) +
   geom_line(aes(y = OSFus)) +
   labs(title = "Google Trends for 'Open Society Foundations' Search Term: US",
@@ -147,13 +153,9 @@ graph8 <- google2 %>% ggplot(aes(x = Month)) +
 ```
 
 ```{r}
-graph9 <- google2 %>% ggplot(aes(x = Month)) +
-  geom_line(aes(y = OSFruWW)) +
-  labs(title = "Google Trends for Open Society Foundations (Russian) Search Term: Worldwide",
-       caption = "Scale of 1-100 on Y axis determined by Google; numbers relative to each other over time.
-       Search term was 'Open Society Foundations' in Russian and worldwide.",
-       y = "Relative Search Frequency",
-       x = "Time")
+pdf("graph8.pdf", width = 10, height = 4)
+graph8
+dev.off()
 ```
 
 ```{r}
@@ -164,10 +166,26 @@ graph9 <- google2 %>% ggplot(aes(x = Month)) +
        Search term was 'Open Society Foundations' in Russian and worldwide.",
        y = "Relative Search Frequency",
        x = "Time")
+```
+
+```{r}
+pdf("graph9.pdf", width = 10, height = 4)
+graph9
+dev.off()
 ```
 
 ```{r}
 graph10 <- google2 %>% ggplot(aes(x = Month)) +
+  geom_line(aes(y = OSFruWW)) +
+  labs(title = "Google Trends for Open Society Foundations (Russian) Search Term: Worldwide",
+       caption = "Scale of 1-100 on Y axis determined by Google; numbers relative to each other over time.
+       Search term was 'Open Society Foundations' in Russian and worldwide.",
+       y = "Relative Search Frequency",
+       x = "Time")
+```
+
+```{r}
+graph11 <- google2 %>% ggplot(aes(x = Month)) +
   geom_line(aes(y = OSUhuENG)) +
   labs(title = "Google Trends for 'Open Society Foundations' Search Term: Hungary",
        caption = "Scale of 1-100 on Y axis determined by Google; numbers relative to each other over time.
@@ -181,7 +199,7 @@ google3 <- read_xlsx("google3.xlsx")
 ```
 
 ```{r}
-graph11 <- google3 %>% ggplot(aes(x = Month)) +
+graph12 <- google3 %>% ggplot(aes(x = Month)) +
   geom_line(aes(y = CEUruWW)) +
   labs(title = "Google Trends for Central European University (Russian) Search Term: Worldwide",
        caption = "Scale of 1-100 on Y axis determined by Google; numbers relative to each other over time.
@@ -191,7 +209,7 @@ graph11 <- google3 %>% ggplot(aes(x = Month)) +
 ```
 
 ```{r}
-graph12 <- google3 %>% ggplot(aes(x = Month)) +
+graph13 <- google3 %>% ggplot(aes(x = Month)) +
   geom_line(aes(y = CEUruNDww)) +
   labs(title = "Google Trends for Central European University (Russian, No Dash)
        Search Term: Worldwide",
@@ -203,7 +221,7 @@ graph12 <- google3 %>% ggplot(aes(x = Month)) +
 ```
 
 ```{r}
-graph13 <- google3 %>% ggplot(aes(x = Month)) +
+graph14 <- google3 %>% ggplot(aes(x = Month)) +
   geom_line(aes(y = CEUhu)) +
   labs(title = "Google Trends for Central European University (Hungarian) Search Term: Hungary",
        caption = "Scale of 1-100 on Y axis determined by Google; numbers relative to each other over time.
@@ -213,7 +231,7 @@ graph13 <- google3 %>% ggplot(aes(x = Month)) +
 ```
 
 ```{r}
-graph14 <- google3 %>% ggplot(aes(x = Month)) +
+graph15 <- google3 %>% ggplot(aes(x = Month)) +
   geom_line(aes(y = CEUhuNA)) +
   labs(title = "Google Trends for Central European University (Hungarian) Search Term: Hungary",
        caption = "Scale of 1-100 on Y axis determined by Google; numbers relative to each other over time.
@@ -223,7 +241,7 @@ graph14 <- google3 %>% ggplot(aes(x = Month)) +
 ```
 
 ```{r}
-graph15 <- google3 %>% ggplot(aes(x = Month)) +
+graph16 <- google3 %>% ggplot(aes(x = Month)) +
   geom_line(aes(y = CEUhuENG)) +
   labs(title = "Google Trends for 'Central European University' Search Term: Hungary",
        caption = "Scale of 1-100 on Y axis determined by Google; numbers relative to each other over time.
@@ -233,7 +251,7 @@ graph15 <- google3 %>% ggplot(aes(x = Month)) +
 ```
 
 ```{r}
-graph16 <- google3 %>% ggplot(aes(x = Month)) +
+graph17 <- google3 %>% ggplot(aes(x = Month)) +
   geom_line(aes(y = CEUus)) +
   labs(title = "Google Trends for 'Central European University' Search Term: US",
        caption = "Scale of 1-100 on Y axis determined by Google; numbers relative to each other over time.
@@ -243,7 +261,7 @@ graph16 <- google3 %>% ggplot(aes(x = Month)) +
 ```
 
 ```{r}
-graph17 <- google3 %>% ggplot(aes(x = Month)) +
+graph18 <- google3 %>% ggplot(aes(x = Month)) +
   geom_line(aes(y = CEUww)) +
   labs(title = "Google Trends for 'Central European University' Search Term: Worldwide",
        caption = "Scale of 1-100 on Y axis determined by Google; numbers relative to each other over time.
@@ -257,7 +275,7 @@ graph17 <- google3 %>% ggplot(aes(x = Month)) +
 ```
 
 ```{r}
-graph18 <- google %>% ggplot(aes(x = Month)) +
+graph19 <- google %>% ggplot(aes(x = Month)) +
   geom_line(aes(y = sorosWW)) +
   labs(title = "Google Trends for 'Soros' Search Term: Worldwide",
        caption = "Scale of 1-100 on Y axis determined by Google; numbers relative to each other over time.
@@ -267,12 +285,7 @@ graph18 <- google %>% ggplot(aes(x = Month)) +
 ```
 
 ```{r}
-  geom_line(aes(y = sorosHU, color = "'Soros' Hungary")) +
-  geom_line(aes(y = sorosUS, color = "'Soros' US")) +
-```
-
-```{r}
-graph19 <- google %>% ggplot(aes(x = Month)) +
+graph20 <- google %>% ggplot(aes(x = Month)) +
     geom_line(aes(y = sorosCyrWW)) +
   labs(title = "Google Trends for Soros (Cyr.) Search Term: Worldwide",
        caption = "Scale of 1-100 on Y axis determined by Google; numbers relative to each other over time.
@@ -282,6 +295,26 @@ graph19 <- google %>% ggplot(aes(x = Month)) +
 ```
 
 ```{r}
-
+graph21 <- google %>% ggplot(aes(x = Month)) +
+    geom_line(aes(y = sorosHU)) +
+  labs(title = "Google Trends for 'Soros' Search Term: Hungary",
+       caption = "Scale of 1-100 on Y axis determined by Google; numbers relative to each other over time.
+       Search term was Soros in Latin letters and in Hungary.",
+       y = "Relative Search Frequency",
+       x = "Time")
 ```
+
+```{r}
+graph22 <- google %>% ggplot(aes(x = Month)) +
+      geom_line(aes(y = sorosUS)) +
+  labs(title = "Google Trends for 'Soros' Search Term: US",
+       caption = "Scale of 1-100 on Y axis determined by Google; numbers relative to each other over time.
+       Search term was Soros in Latin letters and in the US.",
+       y = "Relative Search Frequency",
+       x = "Time")
+```
+
+
+
+
 
