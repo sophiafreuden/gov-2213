@@ -14,7 +14,7 @@ library(tidyverse)
 ```
 
 ```{r}
-google <- read_xlsx("sorosall.xlsx")
+google <- read_xlsx("google.xlsx")
 ```
 
 ```{r}
@@ -106,6 +106,80 @@ pdf("graph5.pdf", width = 7, height = 5)
 graph5
 dev.off()
 ```
+
+```{r}
+google2 <- read_xlsx("google2.xlsx")
+```
+
+```{r}
+# graph6 <- google2 %>% ggplot(aes(x = Month)) +
+#   geom_line(aes(y = OSFww, color = "'Open Society Foundations' Worldwide")) +
+#   geom_line(aes(y = OSFus, color = "'Open Society Foundations' US")) +
+#   geom_line(aes(y = OSFruWW, color = "Open Society Foundations (Russian) Russia")) +
+#   geom_line(aes(y = OSUhuENG, color = "'Open Society Foundations' Hungary")) +
+#   labs(title = "Google Trends for 'Soros' Search Terms Over Time",
+#        caption = "Scale of 1-100 on Y axis determined by Google; numbers relative to each other over time. All search terms in English unless denoted otherwise.",
+#        y = "Relative Search Frequency",
+#        x = "Time",
+#        color = "Search Term")
+
+# This is commented out because I'm not using this graph; it's really messy. But in case you want it, here it is.
+```
+
+```{r}
+graph7 <- google2 %>% ggplot(aes(x = Month)) +
+  geom_line(aes(y = OSFww)) +
+  labs(title = "Google Trends for 'Open Society Foundations' Search Term: Worldwide",
+       caption = "Scale of 1-100 on Y axis determined by Google; numbers relative to each other over time.
+       Search term was 'Open Society Foundations' in English and worldwide.",
+       y = "Relative Search Frequency",
+       x = "Time")
+```
+
+```{r}
+graph8 <- google2 %>% ggplot(aes(x = Month)) +
+  geom_line(aes(y = OSFus)) +
+  labs(title = "Google Trends for 'Open Society Foundations' Search Term: US",
+       caption = "Scale of 1-100 on Y axis determined by Google; numbers relative to each other over time.
+       Search term was 'Open Society Foundations' in English and in the US.",
+       y = "Relative Search Frequency",
+       x = "Time")
+```
+
+```{r}
+graph9 <- google2 %>% ggplot(aes(x = Month)) +
+  geom_line(aes(y = OSFruWW)) +
+  labs(title = "Google Trends for Open Society Foundations (Russian) Search Term: Worldwide",
+       caption = "Scale of 1-100 on Y axis determined by Google; numbers relative to each other over time.
+       Search term was 'Open Society Foundations' in Russian and worldwide.",
+       y = "Relative Search Frequency",
+       x = "Time")
+```
+
+```{r}
+graph9 <- google2 %>% ggplot(aes(x = Month)) +
+  geom_line(aes(y = OSFruWW)) +
+  labs(title = "Google Trends for Open Society Foundations (Russian) Search Term: Worldwide",
+       caption = "Scale of 1-100 on Y axis determined by Google; numbers relative to each other over time.
+       Search term was 'Open Society Foundations' in Russian and worldwide.",
+       y = "Relative Search Frequency",
+       x = "Time")
+```
+
+```{r}
+graph10 <- google2 %>% ggplot(aes(x = Month)) +
+  geom_line(aes(y = OSUhuENG)) +
+  labs(title = "Google Trends for 'Open Society Foundations' Search Term: Hungary",
+       caption = "Scale of 1-100 on Y axis determined by Google; numbers relative to each other over time.
+       Search term was 'Open Society Foundations' in English and in Hungary.",
+       y = "Relative Search Frequency",
+       x = "Time")
+```
+
+```{r}
+
+```
+
 
 
 
