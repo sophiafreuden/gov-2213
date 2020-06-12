@@ -252,7 +252,36 @@ graph17 <- google3 %>% ggplot(aes(x = Month)) +
        x = "Time")
 ```
 
+```{r}
+# The following four graphs are Graph 1 parsed out to be four individual graphs. They also reflect updated data that contains May 2020 (and relative adjustments thereto.)
+```
 
+```{r}
+graph18 <- google %>% ggplot(aes(x = Month)) +
+  geom_line(aes(y = sorosWW)) +
+  labs(title = "Google Trends for 'Soros' Search Term: Worldwide",
+       caption = "Scale of 1-100 on Y axis determined by Google; numbers relative to each other over time.
+       Search term was Soros in Latin letters and worldwide.",
+       y = "Relative Search Frequency",
+       x = "Time")
+```
 
+```{r}
+  geom_line(aes(y = sorosHU, color = "'Soros' Hungary")) +
+  geom_line(aes(y = sorosUS, color = "'Soros' US")) +
+```
 
+```{r}
+graph19 <- google %>% ggplot(aes(x = Month)) +
+    geom_line(aes(y = sorosCyrWW)) +
+  labs(title = "Google Trends for Soros (Cyr.) Search Term: Worldwide",
+       caption = "Scale of 1-100 on Y axis determined by Google; numbers relative to each other over time.
+       Search term was Soros in Cyrillic letters and worldwide.",
+       y = "Relative Search Frequency",
+       x = "Time")
+```
+
+```{r}
+
+```
 
