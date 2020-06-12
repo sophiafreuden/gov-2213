@@ -177,8 +177,81 @@ graph10 <- google2 %>% ggplot(aes(x = Month)) +
 ```
 
 ```{r}
-
+google3 <- read_xlsx("google3.xlsx")
 ```
+
+```{r}
+graph11 <- google3 %>% ggplot(aes(x = Month)) +
+  geom_line(aes(y = CEUruWW)) +
+  labs(title = "Google Trends for Central European University (Russian) Search Term: Worldwide",
+       caption = "Scale of 1-100 on Y axis determined by Google; numbers relative to each other over time.
+       Search term was Central European University in Russian and worldwide.",
+       y = "Relative Search Frequency",
+       x = "Time")
+```
+
+```{r}
+graph12 <- google3 %>% ggplot(aes(x = Month)) +
+  geom_line(aes(y = CEUruNDww)) +
+  labs(title = "Google Trends for Central European University (Russian, No Dash)
+       Search Term: Worldwide",
+       caption = "Scale of 1-100 on Y axis determined by Google; numbers relative to each other over time.
+       Search term was 'Central European University' in Russian and worldwide.
+       The original Russian term contains a dash that was omitted for this version.",
+       y = "Relative Search Frequency",
+       x = "Time")
+```
+
+```{r}
+graph13 <- google3 %>% ggplot(aes(x = Month)) +
+  geom_line(aes(y = CEUhu)) +
+  labs(title = "Google Trends for Central European University (Hungarian) Search Term: Hungary",
+       caption = "Scale of 1-100 on Y axis determined by Google; numbers relative to each other over time.
+       Search term was Central European University in Hungarian and in Hungary.",
+       y = "Relative Search Frequency",
+       x = "Time")
+```
+
+```{r}
+graph14 <- google3 %>% ggplot(aes(x = Month)) +
+  geom_line(aes(y = CEUhuNA)) +
+  labs(title = "Google Trends for Central European University (Hungarian) Search Term: Hungary",
+       caption = "Scale of 1-100 on Y axis determined by Google; numbers relative to each other over time.
+       Search term was Central European University in Hungarian and in Hungary.",
+       y = "Relative Search Frequency",
+       x = "Time")
+```
+
+```{r}
+graph15 <- google3 %>% ggplot(aes(x = Month)) +
+  geom_line(aes(y = CEUhuENG)) +
+  labs(title = "Google Trends for 'Central European University' Search Term: Hungary",
+       caption = "Scale of 1-100 on Y axis determined by Google; numbers relative to each other over time.
+       Search term was Central European University in English and in Hungary.",
+       y = "Relative Search Frequency",
+       x = "Time")
+```
+
+```{r}
+graph16 <- google3 %>% ggplot(aes(x = Month)) +
+  geom_line(aes(y = CEUus)) +
+  labs(title = "Google Trends for 'Central European University' Search Term: US",
+       caption = "Scale of 1-100 on Y axis determined by Google; numbers relative to each other over time.
+       Search term was Central European University in English and in the US.",
+       y = "Relative Search Frequency",
+       x = "Time")
+```
+
+```{r}
+graph17 <- google3 %>% ggplot(aes(x = Month)) +
+  geom_line(aes(y = CEUww)) +
+  labs(title = "Google Trends for 'Central European University' Search Term: Worldwide",
+       caption = "Scale of 1-100 on Y axis determined by Google; numbers relative to each other over time.
+       Search term was Central European University in English and Worldwide.",
+       y = "Relative Search Frequency",
+       x = "Time")
+```
+
 
 
 
