@@ -159,6 +159,8 @@ dev.off()
 ```
 
 ```{r}
+# I'm pretty sure graphs 9 and 10 are the same, but I didn't delete on because I'm not entirely sure.
+
 graph9 <- google2 %>% ggplot(aes(x = Month)) +
   geom_line(aes(y = OSFruWW)) +
   labs(title = "Google Trends for Open Society Foundations (Russian) Search Term: Worldwide",
@@ -390,6 +392,16 @@ graph22 <- google %>% ggplot(aes(x = Month)) +
 pdf("graph22.pdf", width = 10, height = 4)
 graph22
 dev.off()
+```
+
+```{r}
+# Loading in data from Hungary Today. This is the R friendly version, so it should have no quotation marks or diacritics in the character cells.
+
+ht <- read_xlsx("HTRfri.xlsx")
+```
+
+```{r}
+glimpse(ht)
 ```
 
 
