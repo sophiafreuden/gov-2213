@@ -478,6 +478,7 @@ graph28
 ```{r}
 graph29 <- ht %>%
   ggplot(aes(x = Date, y = SorosTag)) +
+  geom_vline(colour="#DD1C1C", xintercept=ht$Date[c(189, 438)]) +
   geom_smooth(method = "loess")
 
 graph29
@@ -497,12 +498,46 @@ graph30
 ```{r}
 graph31 <- ht %>%
   ggplot(aes(x = Date, y = CEUTag)) +
+  geom_vline(colour="#DD1C1C", xintercept=ht$Date[c(189, 438)]) +
   geom_smooth(method = "loess")
 
 graph31
 ```
 
 ```{r}
+graph32 <- ht %>%
+  ggplot(aes(x = Date, y = Event)) +
+  geom_smooth(method = "loess") +
+  geom_vline(colour="#DD1C1C", xintercept=ht$Date[c(189, 438)])
 
+graph32
 ```
+
+```{r}
+graph33 <- ht %>%
+  ggplot(aes(x = Date, y = OSF)) +
+  geom_smooth(method = "loess") +
+  geom_vline(colour="#DD1C1C", xintercept=ht$Date[c(189, 438)])
+
+graph33
+```
+
+```{r}
+graph34 <- ht %>%
+  ggplot(aes(x = Date, y = StopSoros)) +
+  geom_smooth(method = "loess") +
+  geom_vline(colour="#DD1C1C", xintercept=ht$Date[c(189, 438)])
+
+graph34
+```
+
+```{r}
+graph35 <- ht %>%
+  ggplot(aes(x = Date, y = Elections)) +
+  geom_smooth(method = "loess") +
+  geom_vline(colour="#DD1C1C", xintercept=ht$Date[c(189, 438)])
+
+graph35
+```
+
 
