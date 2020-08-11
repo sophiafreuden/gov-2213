@@ -397,15 +397,83 @@ dev.off()
 ```{r}
 # Loading in data from Hungary Today. This is the R friendly version, so it should have no quotation marks or diacritics in the character cells.
 
-ht <- read_xlsx("HTRfri.xlsx")
+htdirty <- read_xlsx("HTRfri.xlsx")
 
 # The tics were coming from spaces in the column names. I also unfroze the top row and unbolded the font. I deleted the URL column as well. It still exists in the Google Sheets version of this dataset online.
 ```
 
 ```{r}
-glimpse(ht)
+ht <- htdirty %>%
+  mutate(Date = as_date(Date))
+
+# for whatever reason, after messing around with the data some, it decided to randomly cast the Date columns as posixct. I converted it to Dates class here.
+
+graph23 <- ht %>%
+  ggplot(aes(x = Date, y = SorosMentions)) +
+  geom_point() +
+  geom_smooth(method = "loess") +
+  geom_vline(colour="#DD1C1C", xintercept=as.numeric(ht$Date[c(189, 438)]))
+
+graph23
 ```
 
+```{r}
+htmini <- ht %>%
+  mutate(Year = year(Date)) %>%
+  filter(Year == 2016)
+
+graph24 <- htmini %>%
+  ggplot(aes(x = Date)) +
+  geom_point(aes(y = SorosMentions))
+
+graph24
+```
+
+```{r}
+htmini2 <- ht %>%
+  mutate(Year = year(Date)) %>%
+  filter(Year == 2017)
+
+graph25 <- htmini2 %>%
+  ggplot(aes(x = Date)) +
+  geom_point(aes(y = SorosMentions))
+
+graph25
+```
+
+```{r}
+htmini3 <- ht %>%
+  mutate(Year = year(Date)) %>%
+  filter(Year == 2018)
+
+graph26 <- htmini3 %>%
+  ggplot(aes(x = Date)) +
+  geom_point(aes(y = SorosMentions))
+
+graph26
+```
+
+```{r}
+htmini4 <- ht %>%
+  mutate(Year = year(Date)) %>%
+  filter(Year == 2019)
+
+graph27 <- htmini4 %>%
+  ggplot(aes(x = Date)) +
+  geom_point(aes(y = SorosMentions))
+
+graph27
+```
+
+```{r}
+# Dist of SorosMentions
+
+graph28 <- ht %>%
+  ggplot(aes(x = SorosMentions)) +
+  geom_histogram(bins = 20)
+
+graph28
+```
 
 
 
