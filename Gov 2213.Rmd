@@ -475,5 +475,34 @@ graph28 <- ht %>%
 graph28
 ```
 
+```{r}
+graph29 <- ht %>%
+  ggplot(aes(x = Date, y = SorosTag)) +
+  geom_smooth(method = "loess")
 
+graph29
+```
+
+```{r}
+graph30 <- ht %>%
+  ggplot(aes(x = Date, y = CEUMention)) +
+  geom_point() +
+  geom_vline(colour="#DD1C1C", xintercept=as.numeric(ht$Date[c(189, 438)])) +
+  geom_smooth(method = "loess") +
+  scale_y_continuous(expand = c(0, 0), limits = c(-1, 35))
+
+graph30
+```
+
+```{r}
+graph31 <- ht %>%
+  ggplot(aes(x = Date, y = CEUTag)) +
+  geom_smooth(method = "loess")
+
+graph31
+```
+
+```{r}
+
+```
 
