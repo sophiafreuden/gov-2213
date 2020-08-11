@@ -398,6 +398,8 @@ dev.off()
 # Loading in data from Hungary Today. This is the R friendly version, so it should have no quotation marks or diacritics in the character cells.
 
 ht <- read_xlsx("HTRfri.xlsx")
+
+# The tics were coming from spaces in the column names. I also unfroze the top row and unbolded the font. I deleted the URL column as well. It still exists in the Google Sheets version of this dataset online.
 ```
 
 ```{r}
