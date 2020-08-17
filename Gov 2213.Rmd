@@ -551,4 +551,14 @@ graph36 <- ht %>%
 graph36
 ```
 
+```{r}
+graph37 <- ht %>%
+  ggplot(aes(x = Date, y = SorosMentions)) +
+  geom_point() +
+  geom_smooth(method = "loess") +
+  geom_vline(colour="#DD1C1C", xintercept=as.numeric(ht$Date[c(189, 438)])) +
+  geom_vline(colour="#1D8234", xintercept=ht$Date[c(40, 50, 92, 126, 151, 163, 208, 234, 289, 374, 391, 401)])
+
+graph37
+```
 
