@@ -479,6 +479,7 @@ graph28
 graph29 <- ht %>%
   ggplot(aes(x = Date, y = SorosTag)) +
   geom_vline(colour="#DD1C1C", xintercept=ht$Date[c(189, 438)]) +
+  # Please note the numbers above correspond to dates that special events occured, but not necessarily the actual news story I use to cite them in or the HT news story that discusses that event.
   geom_smooth(method = "loess")
 
 graph29
@@ -538,6 +539,16 @@ graph35 <- ht %>%
   geom_vline(colour="#DD1C1C", xintercept=ht$Date[c(189, 438)])
 
 graph35
+```
+
+```{r}
+graph36 <- ht %>%
+  ggplot(aes(x = Date, y = Event)) +
+  geom_smooth(method = "loess") +
+  geom_vline(colour="#DD1C1C", xintercept=ht$Date[c(189, 438)]) +
+  geom_vline(colour="#1D8234", xintercept=ht$Date[c(40, 50, 92, 126, 151, 163, 208, 234, 289, 374, 391, 401)])
+# Please note the numbers above correspond to dates that special events occured, but not necessarily the actual news story I use to cite them in or the HT news story that discusses that event.
+graph36
 ```
 
 
