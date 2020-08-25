@@ -562,3 +562,16 @@ graph37 <- ht %>%
 graph37
 ```
 
+```{r}
+# summing SorosMentions values by date
+
+graph38 <- ht %>% 
+  group_by(Date) %>% 
+  summarise(Mentions = sum(SorosMentions)) %>%
+  ggplot(aes(x = Date, y = Mentions)) +
+  geom_point() +
+  geom_smooth(method = "loess") +
+  # I originally recalculated the line placement numbers to fit the grouped data, but I actually needed my original numbers weirdly enough.
+  geom_vline(colour="#DD1C1C", xintercept=as.numeric(ht$Date[c(189, 428)]))
+```
+
