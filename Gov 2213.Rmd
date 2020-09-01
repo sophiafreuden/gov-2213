@@ -575,3 +575,87 @@ graph38 <- ht %>%
   geom_vline(colour="#DD1C1C", xintercept=as.numeric(ht$Date[c(189, 428)]))
 ```
 
+```{r}
+# Reading in updated data from separate Excel file
+
+htdirty2 <- read_xlsx("HTRfri2.xlsx")
+
+ht2 <- htdirty2 %>%
+  mutate(Date = as_date(Date))
+```
+
+```{r}
+graph39 <- ht2 %>%
+  ggplot(aes(x = Date, y = Terrorism)) +
+  geom_point() +
+  scale_y_continuous(expand = c(0, 0), limits = c(-0.1, 2)) +
+  labs(title = "News Articles Mentioning Terrorism", subtitle = "Articles selected from Hungary Today", caption = "Point position at 1 denotes the article mentioned terrorism. Position at 0 denotes absence of the term.
+       N = 453.", y = "Binary Presence/Absence of Term", x = "Article Publishing Date")
+  
+
+graph39
+```
+
+```{r}
+pdf("graph39.pdf", width = 6, height = 4)
+graph39
+dev.off()
+```
+
+```{r}
+graph40 <- ht2 %>%
+  ggplot(aes(x = Date, y = Immigration)) +
+  geom_point() +
+  scale_y_continuous(expand = c(0, 0), limits = c(-0.1, 2)) +
+  labs(title = "News Articles Mentioning Immigration", subtitle = "Articles selected from Hungary Today", caption = "Point position at 1 denotes the article mentioned immigration. Position at 0 denotes absence of the term.
+  Curve fit to show trend in data.
+       N = 453.", y = "Binary Presence/Absence of Term", x = "Article Publishing Date") +
+  geom_smooth(method = "loess")
+  
+
+graph40
+```
+
+```{r}
+pdf("graph40.pdf", width = 6, height = 4)
+graph40
+dev.off()
+```
+
+```{r}
+graph41 <- ht2 %>%
+  ggplot(aes(x = Date, y = Islamophobia)) +
+  geom_point() +
+  scale_y_continuous(expand = c(0, 0), limits = c(-0.1, 2)) +
+  labs(title = "News Articles Mentioning Islamophobia", subtitle = "Articles selected from Hungary Today", caption = "Point position at 1 denotes the article mentioned Islamophobic statements.
+  Position at 0 denotes absence of the term.
+       N = 453.", y = "Binary Presence/Absence of Term", x = "Article Publishing Date")
+  
+
+graph41
+```
+
+```{r}
+pdf("graph41.pdf", width = 6, height = 4)
+graph41
+dev.off()
+```
+
+```{r}
+graph42 <- ht2 %>%
+  ggplot(aes(x = Date, y = Christianity)) +
+  geom_point() +
+  scale_y_continuous(expand = c(0, 0), limits = c(-0.1, 2)) +
+  labs(title = "News Articles Mentioning Christianity", subtitle = "Articles selected from Hungary Today", caption = "Point position at 1 denotes the article mentioned Christianity. Position at 0 denotes absence of the term.
+       N = 453.", y = "Binary Presence/Absence of Term", x = "Article Publishing Date")
+  
+
+graph42
+```
+
+```{r}
+pdf("graph42.pdf", width = 6, height = 4)
+graph42
+dev.off()
+```
+
