@@ -413,57 +413,69 @@ graph23 <- ht %>%
   ggplot(aes(x = Date, y = SorosMentions)) +
   geom_point() +
   geom_smooth(method = "loess") +
-  geom_vline(colour="#DD1C1C", xintercept=as.numeric(ht$Date[c(189, 438)]))
+  geom_vline(colour="#DD1C1C", xintercept=as.numeric(ht$Date[c(189, 438)])) +
+  labs(title = "Counts of Soros Mentions in News Articles", subtitle = "Articles selected from Hungary Today", caption = "Alterantive version with articles published on the same day summed together appended to this study.
+  Vertical lines denote Hungarian (Apr. 2018) and European Parliament (May 2019) elections.
+       N = 453.", y = "Count", x = "Article Publishing Date")
 
 graph23
 ```
 
 ```{r}
-htmini <- ht %>%
-  mutate(Year = year(Date)) %>%
-  filter(Year == 2016)
+pdf("graph23.pdf", height = 4, width = 6)
+graph23
+dev.off()
+```
 
-graph24 <- htmini %>%
-  ggplot(aes(x = Date)) +
-  geom_point(aes(y = SorosMentions))
 
-graph24
+```{r}
+# the following mini datasets I broked up because I was having issues with my larger data file. I fixed those issues however and these are now unnecessary.
+
+# htmini <- ht %>%
+#   mutate(Year = year(Date)) %>%
+#   filter(Year == 2016)
+# 
+# graph24 <- htmini %>%
+#   ggplot(aes(x = Date)) +
+#   geom_point(aes(y = SorosMentions))
+# 
+# graph24
 ```
 
 ```{r}
-htmini2 <- ht %>%
-  mutate(Year = year(Date)) %>%
-  filter(Year == 2017)
-
-graph25 <- htmini2 %>%
-  ggplot(aes(x = Date)) +
-  geom_point(aes(y = SorosMentions))
-
-graph25
+# htmini2 <- ht %>%
+#   mutate(Year = year(Date)) %>%
+#   filter(Year == 2017)
+# 
+# graph25 <- htmini2 %>%
+#   ggplot(aes(x = Date)) +
+#   geom_point(aes(y = SorosMentions))
+# 
+# graph25
 ```
 
 ```{r}
-htmini3 <- ht %>%
-  mutate(Year = year(Date)) %>%
-  filter(Year == 2018)
-
-graph26 <- htmini3 %>%
-  ggplot(aes(x = Date)) +
-  geom_point(aes(y = SorosMentions))
-
-graph26
+# htmini3 <- ht %>%
+#   mutate(Year = year(Date)) %>%
+#   filter(Year == 2018)
+# 
+# graph26 <- htmini3 %>%
+#   ggplot(aes(x = Date)) +
+#   geom_point(aes(y = SorosMentions))
+# 
+# graph26
 ```
 
 ```{r}
-htmini4 <- ht %>%
-  mutate(Year = year(Date)) %>%
-  filter(Year == 2019)
-
-graph27 <- htmini4 %>%
-  ggplot(aes(x = Date)) +
-  geom_point(aes(y = SorosMentions))
-
-graph27
+# htmini4 <- ht %>%
+#   mutate(Year = year(Date)) %>%
+#   filter(Year == 2019)
+# 
+# graph27 <- htmini4 %>%
+#   ggplot(aes(x = Date)) +
+#   geom_point(aes(y = SorosMentions))
+# 
+# graph27
 ```
 
 ```{r}
@@ -481,10 +493,21 @@ graph29 <- ht %>%
   ggplot(aes(x = Date, y = SorosTag)) +
   geom_vline(colour="#DD1C1C", xintercept=ht$Date[c(189, 438)]) +
   # Please note the numbers above correspond to dates that special events occured, but not necessarily the actual news story I use to cite them in or the HT news story that discusses that event.
-  geom_smooth(method = "loess")
+  geom_smooth(method = "loess") +
+  geom_point() +
+  labs(title = "Counts of Soros Tags in News Articles", subtitle = "Articles selected from Hungary Today", caption = "Tags were labeled by Hungary Today and counted here.
+  Vertical lines denote Hungarian (Apr. 2018) and European Parliament (May 2019) elections.
+       N = 453.", y = "Tag Count", x = "Article Publishing Date")
 
 graph29
 ```
+
+```{r}
+pdf("graph29.pdf", height = 4, width = 6)
+graph29
+dev.off()
+```
+
 
 ```{r}
 graph30 <- ht %>%
@@ -492,19 +515,39 @@ graph30 <- ht %>%
   geom_point() +
   geom_vline(colour="#DD1C1C", xintercept=as.numeric(ht$Date[c(189, 438)])) +
   geom_smooth(method = "loess") +
-  scale_y_continuous(expand = c(0, 0), limits = c(-1, 35))
+  scale_y_continuous(expand = c(0, 0), limits = c(-1, 35)) +
+  labs(title = "Counts of CEU Mentions in News Articles", subtitle = "Articles selected from Hungary Today", caption = "Alterantive version with articles published on the same day summed together appended to this study.
+  Vertical lines denote Hungarian (Apr. 2018) and European Parliament (May 2019) elections.
+       N = 453.", y = "Count", x = "Article Publishing Date")
 
 graph30
+```
+
+```{r}
+pdf("graph30.pdf", height = 4, width = 6)
+graph30
+dev.off()
 ```
 
 ```{r}
 graph31 <- ht %>%
   ggplot(aes(x = Date, y = CEUTag)) +
   geom_vline(colour="#DD1C1C", xintercept=ht$Date[c(189, 438)]) +
-  geom_smooth(method = "loess")
+  geom_smooth(method = "loess") +
+  labs(title = "Counts of CEU Tags in News Articles", subtitle = "Articles selected from Hungary Today", caption = "Tags were labeled by Hungary Today and counted here.
+  Vertical lines denote Hungarian (Apr. 2018) and European Parliament (May 2019) elections.
+       N = 453.", y = "Tag Count", x = "Article Publishing Date") +
+  geom_point()
 
 graph31
 ```
+
+```{r}
+pdf("graph31.pdf", height = 4, width = 6)
+graph31
+dev.off()
+```
+
 
 ```{r}
 graph32 <- ht %>%
@@ -574,6 +617,8 @@ graph38 <- ht %>%
   geom_smooth(method = "loess") +
   # I originally recalculated the line placement numbers to fit the grouped data, but I actually needed my original numbers weirdly enough.
   geom_vline(colour="#DD1C1C", xintercept=as.numeric(ht$Date[c(189, 428)]))
+
+graph38
 ```
 
 ```{r}
@@ -719,6 +764,23 @@ graph44
 dev.off()
 ```
 
+```{r}
+# Combining Soros and CEU mentions
+
+# graph45 <- ht3 %>%
+#   mutate(SorosCEU = SorosMentions + CEUMention) %>%
+#   ggplot(aes(x = Date, y = SorosCEU)) +
+#   geom_point() +
+#   geom_smooth(method = "loess")
+# 
+# graph45
+
+# this graph doesn't really show anything interesting, but here it is for posterity's sake
+```
+
+```{r}
+
+```
 
 
 
