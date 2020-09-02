@@ -591,7 +591,9 @@ graph39 <- ht2 %>%
   geom_point() +
   scale_y_continuous(expand = c(0, 0), limits = c(-0.1, 2)) +
   labs(title = "News Articles Mentioning Terrorism", subtitle = "Articles selected from Hungary Today", caption = "Point position at 1 denotes the article mentioned terrorism. Position at 0 denotes absence of the term.
-       N = 453.", y = "Binary Presence/Absence of Term", x = "Article Publishing Date")
+  Vertical lines denote Hungarian (Apr. 2018) and European Parliament (May 2019) elections.
+       N = 453.", y = "Binary Presence/Absence of Term", x = "Article Publishing Date") +
+  geom_vline(colour="#DD1C1C", xintercept=as.numeric(ht$Date[c(189, 428)]))
   
 
 graph39
@@ -609,9 +611,11 @@ graph40 <- ht2 %>%
   geom_point() +
   scale_y_continuous(expand = c(0, 0), limits = c(-0.1, 2)) +
   labs(title = "News Articles Mentioning Immigration", subtitle = "Articles selected from Hungary Today", caption = "Point position at 1 denotes the article mentioned immigration. Position at 0 denotes absence of the term.
+  Vertical lines denote Hungarian (Apr. 2018) and European Parliament (May 2019) elections.
   Curve fit to show trend in data.
        N = 453.", y = "Binary Presence/Absence of Term", x = "Article Publishing Date") +
-  geom_smooth(method = "loess")
+  geom_smooth(method = "loess") +
+  geom_vline(colour="#DD1C1C", xintercept=as.numeric(ht$Date[c(189, 428)]))
   
 
 graph40
@@ -630,7 +634,9 @@ graph41 <- ht2 %>%
   scale_y_continuous(expand = c(0, 0), limits = c(-0.1, 2)) +
   labs(title = "News Articles Mentioning Islamophobia", subtitle = "Articles selected from Hungary Today", caption = "Point position at 1 denotes the article mentioned Islamophobic statements.
   Position at 0 denotes absence of the term.
-       N = 453.", y = "Binary Presence/Absence of Term", x = "Article Publishing Date")
+  Vertical lines denote Hungarian (Apr. 2018) and European Parliament (May 2019) elections.
+       N = 453.", y = "Binary Presence/Absence of Term", x = "Article Publishing Date") +
+  geom_vline(colour="#DD1C1C", xintercept=as.numeric(ht$Date[c(189, 428)]))
   
 
 graph41
@@ -648,7 +654,9 @@ graph42 <- ht2 %>%
   geom_point() +
   scale_y_continuous(expand = c(0, 0), limits = c(-0.1, 2)) +
   labs(title = "News Articles Mentioning Christianity", subtitle = "Articles selected from Hungary Today", caption = "Point position at 1 denotes the article mentioned Christianity. Position at 0 denotes absence of the term.
-       N = 453.", y = "Binary Presence/Absence of Term", x = "Article Publishing Date")
+  Vertical lines denote Hungarian (Apr. 2018) and European Parliament (May 2019) elections.
+       N = 453.", y = "Binary Presence/Absence of Term", x = "Article Publishing Date") +
+  geom_vline(colour="#DD1C1C", xintercept=as.numeric(ht$Date[c(189, 428)]))
   
 
 graph42
@@ -676,8 +684,10 @@ graph43 <- ht3 %>%
   scale_y_continuous(expand = c(0, 0), limits = c(-0.1, 2)) +
   labs(title = "News Articles Mentioning Both the EU and the Soros Network", subtitle = "Articles selected from Hungary Today", caption = "Point position at 1 denotes the article mentioned both terms.
   Position at 0 denotes absence of one or both of the terms.
+  Vertical lines denote Hungarian (Apr. 2018) and European Parliament (May 2019) elections.
        N = 453.", y = "Binary Presence/Absence of Terms", x = "Article Publishing Date") +
-  geom_smooth(method = "loess")
+  geom_smooth(method = "loess") +
+  geom_vline(colour="#DD1C1C", xintercept=as.numeric(ht$Date[c(189, 428)]))
 
 graph43
 ```
