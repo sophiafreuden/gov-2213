@@ -698,3 +698,27 @@ graph43
 dev.off()
 ```
 
+```{r}
+graph44 <- ht3 %>%
+  ggplot(aes(x = Date, y = SorosNetwork)) +
+  geom_point() +
+  scale_y_continuous(expand = c(0, 0), limits = c(-0.1, 2)) +
+  labs(title = "News Articles Mentioning the Soros Network", subtitle = "Articles selected from Hungary Today", caption = "Point position at 1 denotes the article mentioned the so-called Soros network.
+  Position at 0 denotes absence of the term.
+  Vertical lines denote Hungarian (Apr. 2018) and European Parliament (May 2019) elections.
+       N = 453.", y = "Binary Presence/Absence of Term", x = "Article Publishing Date") +
+  geom_smooth(method = "loess") +
+  geom_vline(colour="#DD1C1C", xintercept=as.numeric(ht$Date[c(189, 428)]))
+
+graph44
+```
+
+```{r}
+pdf("graph44.pdf", width = 6, height = 4)
+graph44
+dev.off()
+```
+
+
+
+
