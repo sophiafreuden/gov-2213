@@ -413,7 +413,7 @@ graph23 <- ht %>%
   ggplot(aes(x = Date, y = SorosMentions)) +
   geom_point() +
   geom_smooth(method = "loess") +
-  geom_vline(colour="#DD1C1C", xintercept=as.numeric(ht$Date[c(189, 438)])) +
+  geom_vline(colour="#DD1C1C", xintercept=as.numeric(ht$Date[c(189, 436)])) +
   labs(title = "Counts of Soros Mentions in News Articles", subtitle = "Articles selected from Hungary Today", caption = "Alterantive version with articles published on the same day summed together appended to this study.
   Vertical lines denote Hungarian (Apr. 2018) and European Parliament (May 2019) elections.
        N = 453.", y = "Count", x = "Article Publishing Date")
@@ -491,7 +491,7 @@ graph28
 ```{r}
 graph29 <- ht %>%
   ggplot(aes(x = Date, y = SorosTag)) +
-  geom_vline(colour="#DD1C1C", xintercept=ht$Date[c(189, 438)]) +
+  geom_vline(colour="#DD1C1C", xintercept=ht$Date[c(189, 436)]) +
   # Please note the numbers above correspond to dates that special events occured, but not necessarily the actual news story I use to cite them in or the HT news story that discusses that event.
   geom_smooth(method = "loess") +
   geom_point() +
@@ -513,7 +513,7 @@ dev.off()
 graph30 <- ht %>%
   ggplot(aes(x = Date, y = CEUMention)) +
   geom_point() +
-  geom_vline(colour="#DD1C1C", xintercept=as.numeric(ht$Date[c(189, 438)])) +
+  geom_vline(colour="#DD1C1C", xintercept=as.numeric(ht$Date[c(189, 436)])) +
   geom_smooth(method = "loess") +
   scale_y_continuous(expand = c(0, 0), limits = c(-1, 35)) +
   labs(title = "Counts of CEU Mentions in News Articles", subtitle = "Articles selected from Hungary Today", caption = "Alterantive version with articles published on the same day summed together appended to this study.
@@ -532,7 +532,7 @@ dev.off()
 ```{r}
 graph31 <- ht %>%
   ggplot(aes(x = Date, y = CEUTag)) +
-  geom_vline(colour="#DD1C1C", xintercept=ht$Date[c(189, 438)]) +
+  geom_vline(colour="#DD1C1C", xintercept=ht$Date[c(189, 436)]) +
   geom_smooth(method = "loess") +
   labs(title = "Counts of CEU Tags in News Articles", subtitle = "Articles selected from Hungary Today", caption = "Tags were labeled by Hungary Today and counted here.
   Vertical lines denote Hungarian (Apr. 2018) and European Parliament (May 2019) elections.
@@ -548,12 +548,11 @@ graph31
 dev.off()
 ```
 
-
 ```{r}
 graph32 <- ht %>%
   ggplot(aes(x = Date, y = Event)) +
   geom_smooth(method = "loess") +
-  geom_vline(colour="#DD1C1C", xintercept=ht$Date[c(189, 438)])
+  geom_vline(colour="#DD1C1C", xintercept=ht$Date[c(189, 436)])
 
 graph32
 ```
@@ -562,7 +561,7 @@ graph32
 graph33 <- ht %>%
   ggplot(aes(x = Date, y = OSF)) +
   geom_smooth(method = "loess") +
-  geom_vline(colour="#DD1C1C", xintercept=ht$Date[c(189, 438)])
+  geom_vline(colour="#DD1C1C", xintercept=ht$Date[c(189, 436)])
 
 graph33
 ```
@@ -571,7 +570,7 @@ graph33
 graph34 <- ht %>%
   ggplot(aes(x = Date, y = StopSoros)) +
   geom_smooth(method = "loess") +
-  geom_vline(colour="#DD1C1C", xintercept=ht$Date[c(189, 438)])
+  geom_vline(colour="#DD1C1C", xintercept=ht$Date[c(189, 436)])
 
 graph34
 ```
@@ -580,19 +579,56 @@ graph34
 graph35 <- ht %>%
   ggplot(aes(x = Date, y = Elections)) +
   geom_smooth(method = "loess") +
-  geom_vline(colour="#DD1C1C", xintercept=ht$Date[c(189, 438)])
+  geom_vline(colour="#DD1C1C", xintercept=ht$Date[c(189, 436)])
 
 graph35
 ```
 
 ```{r}
-graph36 <- ht %>%
+graph36 <- ht3 %>%
   ggplot(aes(x = Date, y = Event)) +
   geom_smooth(method = "loess") +
-  geom_vline(colour="#DD1C1C", xintercept=ht$Date[c(189, 438)]) +
-  geom_vline(colour="#1D8234", xintercept=ht$Date[c(40, 50, 92, 126, 151, 163, 208, 234, 289, 374, 391, 401, 422)])
-# Please note the numbers above correspond to dates that special events occured, but not necessarily the actual news story I use to cite them in or the HT news story that discusses that event.
+  geom_vline(colour="#DD1C1C", xintercept=ht$Date[c(189, 436)]) +
+  geom_vline(colour="#1D8234", xintercept=ht$Date[c(38, 49, 91, 94, 125, 150, 162, 233, 286, 372, 390, 400, 420)]) +
+  labs(title = "Events Identified in News Articles", subtitle = "Articles selected from Hungary Today", caption = "Red vertical lines denote Hungarian (Apr. 2018) and European Parliament (May 2019) elections.
+  Green vertical lines correspond with major anti-Soros events established in Table 1.
+       N = 453.", y = "Tag Count", x = "Article Publishing Date") +
+  geom_point() +
+  scale_y_continuous(expand = c(0, 0), limits = c(-0.1, 2))
+
+# Please note the long string of numbers above correspond to dates that special events occured, but not necessarily the actual news story I use to cite them in or the HT news story that discusses that event.
+
 graph36
+
+# 134, 144, 186, 188, 209, 224, 230, 261, 302, 379, 396, 403, 424
+```
+
+```{r}
+pdf("graph36.pdf", height = 4, width = 6)
+graph36
+dev.off()
+```
+
+```{r}
+graph36b <- ht3 %>%
+  ggplot(aes(x = Date, y = Event)) +
+  geom_smooth(method = "loess") +
+  geom_vline(colour="#DD1C1C", xintercept=ht$Date[c(189, 436)]) +
+  labs(title = "Events Identified in News Articles", subtitle = "Articles selected from Hungary Today", caption = "Red vertical lines denote Hungarian (Apr. 2018) and European Parliament (May 2019) elections.
+       N = 453.", y = "Tag Count", x = "Article Publishing Date") +
+  geom_point() +
+  scale_y_continuous(expand = c(0, 0), limits = c(-0.1, 2))
+
+graph36b
+
+# summary(ht3)
+# to see the mean of events because this visual is hard to interpret.
+```
+
+```{r}
+pdf("graph36b.pdf", height = 4, width = 6)
+graph36b
+dev.off()
 ```
 
 ```{r}
@@ -600,8 +636,9 @@ graph37 <- ht %>%
   ggplot(aes(x = Date, y = SorosMentions)) +
   geom_point() +
   geom_smooth(method = "loess") +
-  geom_vline(colour="#DD1C1C", xintercept=as.numeric(ht$Date[c(189, 438)])) +
-  geom_vline(colour="#1D8234", xintercept=ht$Date[c(40, 50, 92, 126, 151, 163, 208, 234, 289, 374, 391, 401, 422)])
+  geom_vline(colour="#DD1C1C", xintercept=as.numeric(ht$Date[c(189, 436)])) +
+  geom_vline(colour="#1D8234", xintercept=ht$Date[c(40, 50, 92, 126, 151, 163, 208, 234, 289, 374, 391, 401, 422)]) +
+  geom_point()
 
 graph37
 ```
@@ -616,7 +653,7 @@ graph38 <- ht %>%
   geom_point() +
   geom_smooth(method = "loess") +
   # I originally recalculated the line placement numbers to fit the grouped data, but I actually needed my original numbers weirdly enough.
-  geom_vline(colour="#DD1C1C", xintercept=as.numeric(ht$Date[c(189, 428)]))
+  geom_vline(colour="#DD1C1C", xintercept=as.numeric(ht$Date[c(189, 436)]))
 
 graph38
 ```
@@ -638,7 +675,7 @@ graph39 <- ht2 %>%
   labs(title = "News Articles Mentioning Terrorism", subtitle = "Articles selected from Hungary Today", caption = "Point position at 1 denotes the article mentioned terrorism. Position at 0 denotes absence of the term.
   Vertical lines denote Hungarian (Apr. 2018) and European Parliament (May 2019) elections.
        N = 453.", y = "Binary Presence/Absence of Term", x = "Article Publishing Date") +
-  geom_vline(colour="#DD1C1C", xintercept=as.numeric(ht$Date[c(189, 428)]))
+  geom_vline(colour="#DD1C1C", xintercept=as.numeric(ht$Date[c(189, 436)]))
   
 
 graph39
@@ -660,7 +697,7 @@ graph40 <- ht2 %>%
   Curve fit to show trend in data.
        N = 453.", y = "Binary Presence/Absence of Term", x = "Article Publishing Date") +
   geom_smooth(method = "loess") +
-  geom_vline(colour="#DD1C1C", xintercept=as.numeric(ht$Date[c(189, 428)]))
+  geom_vline(colour="#DD1C1C", xintercept=as.numeric(ht$Date[c(189, 436)]))
   
 
 graph40
@@ -681,7 +718,7 @@ graph41 <- ht2 %>%
   Position at 0 denotes absence of the term.
   Vertical lines denote Hungarian (Apr. 2018) and European Parliament (May 2019) elections.
        N = 453.", y = "Binary Presence/Absence of Term", x = "Article Publishing Date") +
-  geom_vline(colour="#DD1C1C", xintercept=as.numeric(ht$Date[c(189, 428)]))
+  geom_vline(colour="#DD1C1C", xintercept=as.numeric(ht$Date[c(189, 436)]))
   
 
 graph41
@@ -701,7 +738,7 @@ graph42 <- ht2 %>%
   labs(title = "News Articles Mentioning Christianity", subtitle = "Articles selected from Hungary Today", caption = "Point position at 1 denotes the article mentioned Christianity. Position at 0 denotes absence of the term.
   Vertical lines denote Hungarian (Apr. 2018) and European Parliament (May 2019) elections.
        N = 453.", y = "Binary Presence/Absence of Term", x = "Article Publishing Date") +
-  geom_vline(colour="#DD1C1C", xintercept=as.numeric(ht$Date[c(189, 428)]))
+  geom_vline(colour="#DD1C1C", xintercept=as.numeric(ht$Date[c(189, 436)]))
   
 
 graph42
@@ -732,7 +769,7 @@ graph43 <- ht3 %>%
   Vertical lines denote Hungarian (Apr. 2018) and European Parliament (May 2019) elections.
        N = 453.", y = "Binary Presence/Absence of Terms", x = "Article Publishing Date") +
   geom_smooth(method = "loess") +
-  geom_vline(colour="#DD1C1C", xintercept=as.numeric(ht$Date[c(189, 428)]))
+  geom_vline(colour="#DD1C1C", xintercept=as.numeric(ht$Date[c(189, 436)]))
 
 graph43
 ```
@@ -753,7 +790,7 @@ graph44 <- ht3 %>%
   Vertical lines denote Hungarian (Apr. 2018) and European Parliament (May 2019) elections.
        N = 453.", y = "Binary Presence/Absence of Term", x = "Article Publishing Date") +
   geom_smooth(method = "loess") +
-  geom_vline(colour="#DD1C1C", xintercept=as.numeric(ht$Date[c(189, 428)]))
+  geom_vline(colour="#DD1C1C", xintercept=as.numeric(ht$Date[c(189, 436)]))
 
 graph44
 ```
@@ -778,9 +815,6 @@ dev.off()
 # this graph doesn't really show anything interesting, but here it is for posterity's sake
 ```
 
-```{r}
-
-```
 
 
 
