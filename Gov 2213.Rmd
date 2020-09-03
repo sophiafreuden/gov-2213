@@ -508,7 +508,6 @@ graph29
 dev.off()
 ```
 
-
 ```{r}
 graph30 <- ht %>%
   ggplot(aes(x = Date, y = CEUMention)) +
@@ -585,11 +584,13 @@ graph35
 ```
 
 ```{r}
+# If you're going to mess with the numbers depicting special events, make sure that you're using the numbers actually associated with those rows of data. Make sure your data is chronoligically sorted and use view(data) to determine what number goes with what row.
+
 graph36 <- ht3 %>%
   ggplot(aes(x = Date, y = Event)) +
   geom_smooth(method = "loess") +
   geom_vline(colour="#DD1C1C", xintercept=ht$Date[c(189, 436)]) +
-  geom_vline(colour="#1D8234", xintercept=ht$Date[c(38, 49, 91, 94, 125, 150, 162, 233, 286, 372, 390, 400, 420)]) +
+  geom_vline(colour="#1D8234", xintercept=ht$Date[c(38, 49, 91, 94, 125, 150, 162, 233, 286, 390, 400, 420)]) +
   labs(title = "Events Identified in News Articles", subtitle = "Articles selected from Hungary Today", caption = "Red vertical lines denote Hungarian (Apr. 2018) and European Parliament (May 2019) elections.
   Green vertical lines correspond with major anti-Soros events established in Table 1.
        N = 453.", y = "Tag Count", x = "Article Publishing Date") +
@@ -637,10 +638,19 @@ graph37 <- ht %>%
   geom_point() +
   geom_smooth(method = "loess") +
   geom_vline(colour="#DD1C1C", xintercept=as.numeric(ht$Date[c(189, 436)])) +
-  geom_vline(colour="#1D8234", xintercept=ht$Date[c(40, 50, 92, 126, 151, 163, 208, 234, 289, 374, 391, 401, 422)]) +
-  geom_point()
+  geom_vline(colour="#1D8234", xintercept=ht$Date[c(38, 49, 91, 94, 125, 150, 162, 233, 286, 390, 400, 420)]) +
+  geom_point() +
+  labs(title = "Counts of Soros Mentions in News Articles with Significant Events", subtitle = "Articles selected from Hungary Today", caption = "Red vertical lines denote Hungarian (Apr. 2018) and European Parliament (May 2019) elections.
+  Green vertical lines correspond with major anti-Soros events established in Table 1
+       N = 453.", y = "Count", x = "Article Publishing Date")
 
 graph37
+```
+
+```{r}
+pdf("graph37.pdf", height = 4, width = 6)
+graph37
+dev.off()
 ```
 
 ```{r}
@@ -814,6 +824,18 @@ dev.off()
 
 # this graph doesn't really show anything interesting, but here it is for posterity's sake
 ```
+
+```{r}
+graph45 <- ht3 %>%
+  ggplot(aes(x = Date, y = Elections)) +
+  geom_point() +
+  scale_y_continuous(expand = c(0, 0), limits = c(-0.1, 2)) +
+  geom_smooth(method = "loess") +
+  geom_vline(colour="#DD1C1C", xintercept=as.numeric(ht$Date[c(189, 436)]))
+
+graph45
+```
+
 
 
 
