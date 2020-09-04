@@ -566,12 +566,24 @@ graph33
 ```
 
 ```{r}
-graph34 <- ht %>%
+graph34 <- ht4 %>%
   ggplot(aes(x = Date, y = StopSoros)) +
   geom_smooth(method = "loess") +
-  geom_vline(colour="#DD1C1C", xintercept=ht$Date[c(189, 436)])
+  geom_vline(colour="#DD1C1C", xintercept=ht$Date[c(189, 436)]) +
+  geom_point() +
+  scale_y_continuous(expand = c(0, 0), limits = c(-0.1, 2)) +
+  labs(title = "News Articles Mentioning Stop Soros", subtitle = "Articles selected from Hungary Today", caption = "Point position at 1 denotes the article mentioned Stop Soros.
+  Position at 0 denotes absence of the term.
+  Vertical lines denote Hungarian (Apr. 2018) and European Parliament (May 2019) elections.
+       N = 453.", y = "Binary Presence/Absence of Term", x = "Article Publishing Date")
 
 graph34
+```
+
+```{r}
+pdf("graph34.pdf", height = 4, width = 6)
+graph34
+dev.off()
 ```
 
 ```{r}
@@ -836,7 +848,31 @@ graph45 <- ht3 %>%
 graph45
 ```
 
+```{r}
+htdirty4 <- read_xlsx("HTRfri4.xlsx")
 
+ht4 <- htdirty4 %>%
+  mutate(Date = as_date(Date))
+```
 
+```{r}
+graph46 <- ht4 %>%
+  ggplot(aes(x = Date, y = Jobbik)) +
+  geom_point() +
+  scale_y_continuous(expand = c(0, 0), limits = c(-0.1, 2)) +
+  geom_smooth(method = "loess") +
+  geom_vline(colour="#DD1C1C", xintercept=as.numeric(ht$Date[c(189, 436)])) +
+  labs(title = "News Articles Mentioning Jobbik", subtitle = "Articles selected from Hungary Today", caption = "Point position at 1 denotes the article mentioned Jobbik.
+  Position at 0 denotes absence of the term.
+  Vertical lines denote Hungarian (Apr. 2018) and European Parliament (May 2019) elections.
+       N = 453.", y = "Binary Presence/Absence of Term", x = "Article Publishing Date")
 
+graph46
+```
+
+```{r}
+pdf("graph46.pdf", heigh = 4, width = 6)
+graph46
+dev.off()
+```
 
