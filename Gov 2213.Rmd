@@ -414,7 +414,7 @@ graph23 <- ht %>%
   geom_point() +
   geom_smooth(method = "loess") +
   geom_vline(colour="#DD1C1C", xintercept=as.numeric(ht$Date[c(189, 436)])) +
-  labs(title = "Counts of Soros Mentions in News Articles", subtitle = "Articles selected from Hungary Today", caption = "Alterantive version with articles published on the same day summed together appended to this study.
+  labs(title = "Counts of Soros Mentions in News Articles", subtitle = "Articles selected from Hungary Today", caption = "Alternative version with articles published on the same day summed together appended to this study.
   Vertical lines denote Hungarian (Apr. 2018) and European Parliament (May 2019) elections.
        N = 453.", y = "Count", x = "Article Publishing Date")
 
@@ -515,7 +515,7 @@ graph30 <- ht %>%
   geom_vline(colour="#DD1C1C", xintercept=as.numeric(ht$Date[c(189, 436)])) +
   geom_smooth(method = "loess") +
   scale_y_continuous(expand = c(0, 0), limits = c(-1, 35)) +
-  labs(title = "Counts of CEU Mentions in News Articles", subtitle = "Articles selected from Hungary Today", caption = "Alterantive version with articles published on the same day summed together appended to this study.
+  labs(title = "Counts of CEU Mentions in News Articles", subtitle = "Articles selected from Hungary Today", caption = "Alternative version with articles published on the same day summed together appended to this study.
   Vertical lines denote Hungarian (Apr. 2018) and European Parliament (May 2019) elections.
        N = 453.", y = "Count", x = "Article Publishing Date")
 
@@ -525,6 +525,28 @@ graph30
 ```{r}
 pdf("graph30.pdf", height = 4, width = 6)
 graph30
+dev.off()
+```
+
+```{r}
+graph30b <- ht %>%
+  group_by(Date) %>% 
+  summarise(Mentions = sum(CEUMention)) %>%
+  ggplot(aes(x = Date, y = Mentions)) +
+  geom_point() +
+  geom_vline(colour="#DD1C1C", xintercept=as.numeric(ht$Date[c(189, 436)])) +
+  geom_smooth(method = "loess") +
+  scale_y_continuous(expand = c(0, 0), limits = c(-1, 35)) +
+  labs(title = "Counts of CEU Mentions in News Articles", subtitle = "Articles selected from Hungary Today", caption = "Article counts summed by date.
+  Vertical lines denote Hungarian (Apr. 2018) and European Parliament (May 2019) elections.
+       N = 453.", y = "Count", x = "Article Publishing Date")
+
+graph30b
+```
+
+```{r}
+pdf("graph30b.pdf", height = 4, width = 6)
+graph30b
 dev.off()
 ```
 
@@ -675,10 +697,20 @@ graph38 <- ht %>%
   geom_point() +
   geom_smooth(method = "loess") +
   # I originally recalculated the line placement numbers to fit the grouped data, but I actually needed my original numbers weirdly enough.
-  geom_vline(colour="#DD1C1C", xintercept=as.numeric(ht$Date[c(189, 436)]))
+  geom_vline(colour="#DD1C1C", xintercept=as.numeric(ht$Date[c(189, 436)])) +
+  labs(title = "Counts of Soros Mentions in News Articles", subtitle = "Articles selected from Hungary Today", caption = "Article counts summed by date.
+  Vertical lines denote Hungarian (Apr. 2018) and European Parliament (May 2019) elections.
+       N = 453.", y = "Count", x = "Article Publishing Date")
 
 graph38
 ```
+
+```{r}
+pdf("graph38.pdf", height = 4, width = 6)
+graph38
+dev.off()
+```
+
 
 ```{r}
 # Reading in updated data from separate Excel file
